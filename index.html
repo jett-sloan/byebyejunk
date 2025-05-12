@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bye Bye Junk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+          .before-after-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+  .before-after-slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50%;   /* start halfway */
+    overflow: hidden;
+  }
+  .before-after-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .slider-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: white;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: ew-resize;
+    z-index: 10;
+  }
+  .slider-handle::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+    </style>
+</head>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+
+<script src="app.js"></script>
+
+<body class="font-sans antialiased text-gray-800 bg-white">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+
+            <a href="#home" class="flex items-center text-primary-600 font-bold text-xl">
+                <img src="logo.png" alt="Bye Bye Junk Logo" class="w-20 h-20 object-contain mr-2" />
+
+            </a>
+
+
+            <ul class="hidden md:flex items-center space-x-8">
+                <li><a href="#home" class="text-gray-700 hover:text-primary-600">Home</a></li>
+                <li><a href="#about" class="text-gray-700 hover:text-primary-600">About</a></li>
+                <li><a href="#contact" class="text-gray-700 hover:text-primary-600">Contact</a></li>
+                <li>
+                    <a href="tel:8134595731"
+                        class="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 transition">
+                        <i class="fas fa-phone mr-2"></i> (813) 459-5731
+                    </a>
+                </li>
+            </ul>
+
+
+            <button id="nav-toggle" type="button"
+                class="md:hidden p-2 inline-flex items-center justify-center rounded-md text-gray-700 hover:text-primary-600 focus:outline-none"
+                aria-label="Toggle menu">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+
+
+        <div id="nav-menu"
+            class="hidden md:hidden bg-white border-t border-gray-200 overflow-hidden transition-[height] duration-300">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-600">
+                    Home
+                </a>
+                <a href="#about"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-600">
+                    About
+                </a>
+                <a href="#contact"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-600">
+                    Contact
+                </a>
+                <a href="tel:8134595731"
+                    class="block px-3 py-2 rounded-md text-base font-medium bg-primary-600 text-white hover:bg-primary-700">
+                    <i class="fas fa-phone mr-2"></i> (813) 459-5731
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <section id="home" class="min-h-screen">
+
+        <div class="relative hero-bg min-h-[85vh] flex items-center justify-center text-center text-white px-4"
+            style="background-image: url('/homepagejunk.png'); background-size: cover; background-position: center;">
+
+
+
+            <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+
+            <div class="relative z-10 max-w-4xl mx-auto text-center">
+
+
+                <div class="flex flex-wrap justify-center items-center gap-4 mb-6">
+                    <h1 class="text-5xl md:text-6xl font-extrabold m-0 p-0">Quick & Easy Junk Removal</h1>
+                    <span class="text-5xl md:text-6xl font-extrabold text-primary-600 m-0 p-0">Call Us Today!</span>
+
+                </div>
+
+                <p class="text-xl mb-8">Fast, affordable junk removal services for homes and businesses in your area.
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact"
+                        class="bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-md transition duration-300">
+                        Get a Free Quote
+                    </a>
+                    <a href="tel:8134595731"
+                        class="bg-white hover:bg-gray-100 text-primary-600 font-bold py-3 px-6 rounded-md transition duration-300">
+                        <i class="fas fa-phone mr-2"></i> (813) 459-5731
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">We handle all types of junk removal with
+                        professional service and care.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="text-primary-600 mb-4">
+                            <i class="fas fa-trash-alt text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Junk Removal & Hauling</h3>
+                        <p class="text-gray-600">We'll haul away any unwanted items from your home or business quickly
+                            and efficiently.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="text-primary-600 mb-4">
+                            <i class="fas fa-home text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Full House Cleanouts</h3>
+                        <p class="text-gray-600">Moving or decluttering? We can clear out entire homes, garages, or
+                            basements.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="text-primary-600 mb-4">
+                            <i class="fas fa-hammer text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Light Demolition</h3>
+                        <p class="text-gray-600">We handle small demolition projects like sheds, decks, and interior
+                            tear-outs.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="text-primary-600 mb-4">
+                            <i class="fas fa-couch text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Furniture Removal</h3>
+                        <p class="text-gray-600">Old couches, mattresses, appliances - we'll take them away for proper
+                            disposal.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="text-primary-600 mb-4">
+                            <i class="fas fa-leaf text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Yard Debris Removal</h3>
+                        <p class="text-gray-600">Branches, leaves, grass clippings - we'll clean up your yard waste.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="text-primary-600 mb-4">
+                            <i class="fas fa-warehouse text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Storage Unit Cleanouts</h3>
+                        <p class="text-gray-600">Need to clear out a storage unit? We can handle it quickly and
+                            affordably.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+
+                <div>
+                    <h2 class="text-4xl font-bold mb-4 text-gray-900">Pick Up Services</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Our pick-up services make it easy to get rid of unwanted items fast. Whether it’s a single
+                        appliance or a full load of junk, we’ll arrive on time, do the heavy lifting, and haul
+                        everything away hassle-free.
+                    </p>
+                    <a href="#contact"
+                        class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-bold px-6 py-3 rounded-md hover:bg-blue-700 transition">
+                        Get a Free Quote
+                    </a>
+                </div>
+
+
+                <div>
+                    <img src="/pick-up.png" alt="Junk removal truck" class="w-full h-auto rounded-lg shadow-lg" />
+                </div>
+
+            </div>
+        </section>
+
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+
+                <div>
+                    <img src="/newtrailer.png" alt="Junk removal truck" class="w-full h-auto rounded-lg shadow-lg" />
+                </div>
+
+
+                <div>
+                    <h2 class="text-4xl font-bold mb-4 text-gray-900">Rent a Dump Trailer</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Need to handle the cleanup yourself? Rent one of our heavy-duty dump trailers for an affordable,
+                        hassle-free way to haul junk, debris, or yard waste on your own schedule.
+                    </p>
+
+                    <a href="#contact"
+                        class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-bold px-6 py-3 rounded-md hover:bg-blue-700 transition">
+                        Get a Free Quote
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+        <div class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Bye Bye Junk</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">We're committed to providing the best junk
+                        removal experience.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div
+                            class="bg-primary-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-bolt text-primary-600 text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Fast Service</h3>
+                        <p class="text-gray-600">Same-day service available for most jobs.</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="bg-primary-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-dollar-sign text-primary-600 text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Affordable Pricing</h3>
+                        <p class="text-gray-600">Upfront pricing with no hidden fees.</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="bg-primary-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-shield-alt text-primary-600 text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Licensed & Insured</h3>
+                        <p class="text-gray-600">Professional service you can trust.</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="bg-primary-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-users text-primary-600 text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Friendly Team</h3>
+                        <p class="text-gray-600">Local professionals who care about your space.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">What Our Customers Say</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">Don't just take our word for it - hear from our
+                        satisfied customers.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">" These guys were awesome. They gave me a fair quote over the
+                            phone, arrived just two hours later, and cleared my large items in about 15 minutes. Their
+                            professionalism, same-day service, and positive attitudes were unbeatable—I highly recommend
+                            them and will use them again!"</p>
+                        <div class="flex items-center">
+                            <div class="bg-primary-100 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                <span class="text-primary-600 font-semibold">JS</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Christ Novitch</h4>
+                                <p class="text-sm text-gray-500">Local Resident</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"Super fast and reliable junk removal in Tampa. They gave me a
+                            fair quote, removed my couch and dresser the same day with quick response time, always
+                            courteous, professional service guaranteed, and worked carefully and efficiently. I won’t
+                            hesitate to hire them again!"</p>
+                        <div class="flex items-center">
+                            <div class="bg-primary-100 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                <span class="text-primary-600 font-semibold">MP</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Maria P.</h4>
+                                <p class="text-sm text-gray-500">Homeowner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">"I had so many different things that needed to be gone, and they
+                            made the process so easy. The team was fast, friendly, and efficient, handling everything
+                            with care. I’m so glad I chose this service, and I’ll definitely be using them again in the
+                            future!"</p>
+                        <div class="flex items-center">
+                            <div class="bg-primary-100 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                                <span class="text-primary-600 font-semibold">DR</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Lisa S.</h4>
+                                <p class="text-sm text-gray-500">Home Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Before & After</h2>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        See the transformation our service provides.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Slider 1 -->
+                    <div class="before-after-container h-96 rounded-lg overflow-hidden shadow-lg">
+                        <img src="/before.jpg" alt="Before junk removal" class="w-full h-full object-cover">
+                        <div class="before-after-slider">
+                            <img src="/after.jpg" alt="After junk removal" class="w-full h-full object-cover">
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <!-- Slider 2 -->
+                    <div class="before-after-container h-96 rounded-lg overflow-hidden shadow-lg">
+                        <img src="/Before Recent Junk Removal Pic.jpeg" alt="Before junk removal"
+                            class="w-full h-full object-cover">
+                        <div class="before-after-slider">
+                            <img src="/After Recent Junk Removal pic.jpeg" alt="After junk removal"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-16 bg-primary-600 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold mb-6">Ready to Get Rid of Your Junk?</h2>
+                <p class="text-xl mb-8 max-w-3xl mx-auto">Contact us today for fast, friendly service at an affordable
+                    price.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact"
+                        class="bg-white hover:bg-gray-100 text-primary-600 font-bold py-3 px-6 rounded-md transition duration-300">
+                        Get a Free Quote
+                    </a>
+                    <a href="tel:8134595731"
+                        class="bg-primary-800 hover:bg-primary-900 text-white font-bold py-3 px-6 rounded-md transition duration-300">
+                        <i class="fas fa-phone mr-2"></i> (813) 459-5731
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="min-h-screen py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">About Bye Bye Junk Removal</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Your trusted local junk removal experts</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <img src="/about.jpeg" alt="Bye Bye Junk team" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Who We Are</h2>
+                    <p class="text-gray-600 mb-4">I started this junk removal company with a simple goal: to help people
+                        reclaim their space and make their lives easier. After seeing how overwhelming it can be to
+                        clear out unwanted items, I knew there was a need for a reliable, efficient, and hassle-free
+                        solution. With a passion for service and a commitment to professionalism, I decided to build a
+                        business that would provide a helping hand to those in need of decluttering. Over time, our team
+                        has grown, but our core mission remains the same — to serve our community with respect and care.
+                    </p>
+                    <p class="text-gray-600 mb-6">Our team of professional junk haulers takes pride in making the
+                        removal process as easy as possible for our customers. We handle all the heavy lifting, loading,
+                        and proper disposal so you don't have to.</p>
+                    <div class="bg-primary-50 p-6 rounded-lg border-l-4 border-primary-600">
+                        <p class="text-gray-700 italic">"We believe in doing business the right way - with honesty,
+                            integrity, and respect for our customers and our community."</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-12 bg-gray-50 rounded-lg px-8 mb-16">
+                <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Our Values</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div
+                            class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-hand-holding-heart text-primary-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Honesty</h3>
+                        <p class="text-gray-600">We provide upfront pricing with no hidden fees or surprises.</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-award text-primary-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Professionalism</h3>
+                        <p class="text-gray-600">Our team is trained, licensed, and insured for your protection.</p>
+                    </div>
+                    <div class="text-center">
+                        <div
+                            class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-hands-helping text-primary-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Community</h3>
+                        <p class="text-gray-600">We support local charities and recycle whenever possible.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Why Customers Trust Us</h2>
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="bg-primary-100 rounded-full w-8 h-8 flex items-center justify-center">
+                                <i class="fas fa-check text-primary-600"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Licensed & Insured</h3>
+                            <p class="text-gray-600">We're fully licensed and carry comprehensive liability insurance
+                                for your peace of mind.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="bg-primary-100 rounded-full w-8 h-8 flex items-center justify-center">
+                                <i class="fas fa-check text-primary-600"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Eco-Friendly Disposal</h3>
+                            <p class="text-gray-600">We recycle or donate over 60% of the items we collect, keeping them
+                                out of landfills.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="bg-primary-100 rounded-full w-8 h-8 flex items-center justify-center">
+                                <i class="fas fa-check text-primary-600"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-900">Local Expertise</h3>
+                            <p class="text-gray-600">As a locally owned business, we understand the specific needs of
+                                our community.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="bg-primary-100 rounded-full w-8 h-8 flex items-center justify-center">
+                                <i class="fas fa-check text-primary-600"></i>
+                            </div>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-lg font-semibold text-gray-900">No Job Too Big or Small</h3>
+                            <p class="text-gray-600">From single items to full property cleanouts, we can handle it all.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Page -->
+    <section id="contact" class="min-h-screen py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Get in touch for a free, no-obligation quote</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                            <input type="text" id="name" name="name"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+                                required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email
+                                Address</label>
+                            <input type="email" id="email" name="email"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"
+                                required>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" id="phone" name="phone"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500">
+                        </div>
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Service
+                                Needed</label>
+                            <select id="service" name="service"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500">
+                                <option value="">Select a service</option>
+                                <option value="rent">Rent a Trailer</option>
+                                <option value="junk-removal">Junk Removal & Hauling</option>
+                                <option value="cleanout">Full House Cleanout</option>
+                                <option value="demolition">Light Demolition</option>
+                                <option value="furniture">Furniture Removal</option>
+                                <option value="yard-debris">Yard Debris Removal</option>
+                                <option value="storage-unit">Storage Unit Cleanout</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Details About Your
+                                Junk</label>
+                            <textarea id="message" name="message" rows="4"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary-500 focus:border-primary-500"></textarea>
+                        </div>
+
+                        <div>
+                            <button type="submit"
+                                class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-4 rounded-md transition duration-300">
+                                Get Your Free Quote
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div>
+                    <div class="bg-white p-8 rounded-lg shadow-md mb-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-primary-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-semibold text-gray-900">Our Location</h3>
+                                    <p class="text-gray-600">15701 Willowdale Road<br>Hilsborough, FL 34638</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-phone-alt text-primary-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-semibold text-gray-900">Call Us</h3>
+                                    <p class="text-gray-600">
+                                        <a href="tel:8134595731" class="hover:text-primary-600">(813) 459-5731</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-envelope text-primary-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-semibold text-gray-900">Email Us</h3>
+                                    <p class="text-gray-600">
+                                        <a href="mailto:byebyejunkremovalservice@gmail.com"
+                                            class="hover:text-primary-600">byebyejunkremovalservice@gmail.com</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-clock text-primary-600 text-xl"></i>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-semibold text-gray-900">Hours of Operation</h3>
+                                    <p class="text-gray-600">Monday - Friday: 7am - 6pm<br>Saturday: 8am -
+                                        4pm<br>Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Service Area Map</h3>
+                        <div class="aspect-w-16 aspect-h-9">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d356392.09339412115!2d-82.53272920000001!3d27.8417688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2c7f45b5b0e29%3A0x9ad2e4a81cf76935!2sHillsborough%20County%2C%20FL!5e0!3m2!1sen!2sus!4v1614362234567!5m2!1sen!2sus"
+                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade" class="rounded-lg"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Bye Bye Junk Removal</h3>
+                    <p class="text-gray-400">Welcome to Bye Bye Junk, FL, where we transform cluttered spaces into
+                        organized, usable areas.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">About Us</a>
+                        </li>
+                        <li><a href="#contact"
+                                class="text-gray-400 hover:text-white transition duration-300">Contact</a></li>
+                        <li><a href="#services"
+                                class="text-gray-400 hover:text-white transition duration-300">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Junk Removal</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">House
+                                Cleanouts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Demolition</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Furniture
+                                Removal</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-yelp text-xl"></i>
+                        </a>
+                    </div>
+                    <a href="tel:8134595731"
+                        class="inline-flex items-center text-white bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-md transition duration-300">
+                        <i class="fas fa-phone mr-2"></i> (813) 459-5731
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Bye Bye Junk Removal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Vanilla JS toggle
+        const btn = document.getElementById('nav-toggle');
+        const menu = document.getElementById('nav-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+
+        document.querySelectorAll('.before-after-container').forEach(container => {
+            const slider = container.querySelector('.before-after-slider');
+            const handle = container.querySelector('.slider-handle');
+            let isDragging = false;
+
+            const startDrag = () => { isDragging = true; };
+            const endDrag = () => { isDragging = false; };
+            const onDrag = e => {
+                if (!isDragging) return;
+                const rect = container.getBoundingClientRect();
+                let x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+                x = Math.max(0, Math.min(x, rect.width));
+                slider.style.width = x + 'px';
+                handle.style.left = x + 'px';
+            };
+
+            // Mouse events
+            handle.addEventListener('mousedown', startDrag);
+            document.addEventListener('mouseup', endDrag);
+            document.addEventListener('mousemove', onDrag);
+
+            // Touch events
+            handle.addEventListener('touchstart', startDrag);
+            document.addEventListener('touchend', endDrag);
+            document.addEventListener('touchmove', onDrag);
+        });
+    </script>
+</body>
+
+</html>
